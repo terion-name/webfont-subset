@@ -1,0 +1,12 @@
+{
+  "name": "webfont-subset",
+  "version": "0.0.1",
+  "bin": "cli.js",
+  "main": "index.js",
+  "dependencies": {
+    "commander": "^10.0.0",
+    "fontmin": "^0.9.9",
+    "html-to-text": "^9.0.3",
+    "mkdirp": "^2.1.3"
+  }
+}
