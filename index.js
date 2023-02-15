@@ -33,7 +33,7 @@ async function reduceText(inputFonts, output, text, formats) {
  * @param {string[]} [formats] - Additional output fonts format (besides ttf), available options: woff, woff2, eot, svg, css
  */
 async function reduceSubsets(inputFonts, output, subsets, formats) {
-    subsets = Array.isArray(subsets) ? subsets : subsets
+    subsets = Array.isArray(subsets) ? subsets : [subsets]
     const text = Array.from(
         subsets.map((s) => {
             if (basicSubsets[s]) {

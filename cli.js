@@ -23,7 +23,7 @@ program
     .command('text')
     .description('Reduce fonts to meet chars in text')
     .requiredOption('-i, --input <string...>', 'Source files, supports globing')
-    .requiredOption('-o, --output string', 'Destination directory')
+    .requiredOption('-o, --output <string>', 'Destination directory')
     .option('-f, --format <string...>', 'Additional output formats, besides ttf, available options: woff, woff2, eot, svg, css')
     .option('-t, --text string', 'Target text: use an argument or pipe in')
     .option('-h, --html', 'Treat input as html: will clear out tags and extract text')
@@ -36,7 +36,7 @@ program
                 const tm = setTimeout(() => {
                     console.error("Provide -t option or pipe text in")
                     process.exit(-1)
-                }, 250)
+                }, 500)
                 const stdin = process.openStdin();
                 let data = "";
                 stdin.on('data', chunk => data += chunk);
@@ -48,9 +48,8 @@ program
         }
         // reduce to unique symbols
         opts.text = Array.from(new Set(opts.text.split('')))
-        console.log(opts)
 
-        await subsetter.reduceSubsets(opts.input, opts.output, opts.subset, opts.format)
+        await subsetter.reduceText(opts.input, opts.output, opts.text, opts.format)
     });
 
 program.parseAsync(process.argv)
